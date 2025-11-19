@@ -1,22 +1,47 @@
 # 🏋️ Fitness Booking
 
-Sistema de gestión y reservas para boxes de CrossFit y gimnasios funcionales, inspirado en WODBuster.
+Multi-tenant SaaS platform for CrossFit boxes and functional gyms to manage classes, custom WOD types, and member bookings.
 
-## 🚀 Características
+## 🎯 Key Features
 
-- 📅 Sistema de reservas de clases
-- 👥 Gestión de miembros y usuarios
-- 💪 Programación de WODs (Workout of the Day)
-- 📊 Panel de administración
-- 🎨 Sistema de diseño propio y modular
-- 📱 Responsive (preparado para versión móvil futura)
+- 🏢 **Multi-tenant**: Each box operates independently
+- 🔐 **Role-based Access**: Business owners, athletes, trainers
+- 💪 **Custom WOD Types**: Each box defines their own workout types
+- 📅 **Flexible Scheduling**: Schedule classes with specific dates and times
+- 📊 **Booking Management**: Athletes can book and manage reservations
+- 🎨 **Modern Design System**: Custom SASS-based design system
+- 📱 **Responsive**: Mobile-first approach
 
-## 🛠️ Tecnologías
+## 👥 User Roles
 
+### Business Owner
+- Create and manage their box
+- Define custom WOD types (e.g., "Endurance", "Halterofilia", "CrossTraining")
+- Schedule classes with specific dates, times, and capacity
+- View and manage all bookings
+- Configure box settings
+
+### Athlete
+- Join a box
+- Browse available classes
+- Book classes for specific WOD types, dates, and times
+- Manage their bookings
+- View booking history
+
+## 🛠️ Tech Stack
+
+### Frontend
 - **Angular 20** (Standalone Components)
-- **TypeScript**
-- **SASS** (Sistema de diseño propio)
-- **RxJS**
+- **TypeScript 5.9**
+- **SASS** (Custom design system)
+- **RxJS** (Reactive programming)
+- **Angular Signals** (State management)
+
+### Backend
+- **Supabase** (Backend as a Service)
+- **PostgreSQL** (Database)
+- **JWT Authentication**
+- **Row Level Security** (Data isolation)
 
 ## 📁 Estructura del Proyecto
 
@@ -99,30 +124,48 @@ npm run build
 npm test
 ```
 
+## 📖 Documentation
+
+- **[PROJECT_STATUS.md](./PROJECT_STATUS.md)** - Current status and roadmap
+- **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** - Design system documentation
+- **[CONVENTIONS.md](./CONVENTIONS.md)** - Coding conventions
+- **[docs/DATABASE.md](./docs/DATABASE.md)** - Database schema
+- **[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)** - System architecture
+
 ## 📝 Roadmap
 
-### Fase 1: Fundamentos ✅
-- [x] Sistema de diseño SASS
-- [x] Estructura de carpetas modular
-- [ ] Componentes base reutilizables
-- [ ] Layout principal
-- [ ] Routing básico
+### ✅ Phase 1: Foundation (Complete)
+- [x] SASS design system with utility classes
+- [x] Modular folder structure
+- [x] Button component with 7 variants
+- [x] Database schema design
+- [x] TypeScript interfaces
+- [x] Complete documentation
 
-### Fase 2: Autenticación
-- [ ] Login/Registro
-- [ ] Guards y gestión de sesión
-- [ ] Perfil de usuario
+### 🚧 Phase 2: Backend Setup (In Progress)
+- [ ] Supabase project setup
+- [ ] Database migrations
+- [ ] Authentication configuration
+- [ ] Service layer with abstraction
 
-### Fase 3: Features principales
-- [ ] Dashboard
-- [ ] Sistema de reservas de clases
-- [ ] Gestión de horarios
-- [ ] Calendario de clases
+### 📋 Phase 3: Authentication
+- [ ] Login/Register pages
+- [ ] Auth service
+- [ ] Auth guard
+- [ ] Session management
 
-### Fase 4: Administración
-- [ ] Panel de administración
-- [ ] Gestión de miembros
-- [ ] Estadísticas y reportes
+### 📋 Phase 4: Core Features
+- [ ] Box creation and setup
+- [ ] WOD types management
+- [ ] Class scheduling
+- [ ] Booking system
+- [ ] Dashboards (owner & athlete)
+
+### 📋 Phase 5: Enhancement
+- [ ] Additional UI components
+- [ ] Member management
+- [ ] Notifications
+- [ ] Analytics
 
 ## 📄 Licencia
 
