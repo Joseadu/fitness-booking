@@ -1,0 +1,104 @@
+// ============================================
+// TIPOGRAFÍA
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $gray-900;
+}
+
+h1 {
+  font-size: map-get($font-sizes, '4xl');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, '5xl');
+  }
+}
+
+h2 {
+  font-size: map-get($font-sizes, '3xl');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, '4xl');
+  }
+}
+
+h3 {
+  font-size: map-get($font-sizes, '2xl');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, '3xl');
+  }
+}
+
+h4 {
+  font-size: map-get($font-sizes, 'xl');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, '2xl');
+  }
+}
+
+h5 {
+  font-size: map-get($font-sizes, 'lg');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, 'xl');
+  }
+}
+
+h6 {
+  font-size: map-get($font-sizes, 'base');
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, 'lg');
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+// Clases de texto
+.text-muted {
+  color: $text-muted;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Pesos de fuente
+.fw-light {
+  font-weight: $font-weight-light;
+}
+
+.fw-normal {
+  font-weight: $font-weight-normal;
+}
+
+.fw-medium {
+  font-weight: $font-weight-medium;
+}
+
+.fw-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.fw-bold {
+  font-weight: $font-weight-bold;
+}
+

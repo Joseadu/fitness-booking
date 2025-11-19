@@ -1,59 +1,133 @@
-# FitnessBooking
+# 🏋️ Fitness Booking
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+Sistema de gestión y reservas para boxes de CrossFit y gimnasios funcionales, inspirado en WODBuster.
 
-## Development server
+## 🚀 Características
 
-To start a local development server, run:
+- 📅 Sistema de reservas de clases
+- 👥 Gestión de miembros y usuarios
+- 💪 Programación de WODs (Workout of the Day)
+- 📊 Panel de administración
+- 🎨 Sistema de diseño propio y modular
+- 📱 Responsive (preparado para versión móvil futura)
 
-```bash
-ng serve
+## 🛠️ Tecnologías
+
+- **Angular 20** (Standalone Components)
+- **TypeScript**
+- **SASS** (Sistema de diseño propio)
+- **RxJS**
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── core/                 # Servicios singleton, guards, interceptors
+│   │   ├── services/
+│   │   ├── guards/
+│   │   ├── interceptors/
+│   │   └── models/
+│   │
+│   ├── shared/               # Componentes, pipes, directives reutilizables
+│   │   ├── components/
+│   │   ├── pipes/
+│   │   ├── directives/
+│   │   └── utils/
+│   │
+│   ├── features/             # Módulos de funcionalidad
+│   │   ├── auth/
+│   │   ├── dashboard/
+│   │   ├── classes/
+│   │   ├── bookings/
+│   │   └── ...
+│   │
+│   └── layout/               # Layouts de la aplicación
+│
+└── styles/                   # Sistema de diseño SASS
+    ├── abstracts/            # Variables, mixins, functions
+    ├── base/                 # Reset, tipografía, base
+    ├── themes/               # Temas
+    └── utilities/            # Clases utility (tipo Bootstrap)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🎨 Sistema de Diseño
 
-## Code scaffolding
+El proyecto utiliza un sistema de diseño propio basado en clases utility similar a Bootstrap/Tailwind. Ver documentación completa en [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Ejemplos rápidos
 
-```bash
-ng generate component component-name
+```html
+<!-- Espaciado -->
+<div class="p-4 mt-8 mx-auto">...</div>
+
+<!-- Flexbox -->
+<div class="d-flex justify-between align-center gap-4">...</div>
+
+<!-- Grid -->
+<div class="d-grid grid-cols-3 gap-6">...</div>
+
+<!-- Colores -->
+<div class="bg-primary text-white rounded-lg shadow-md">...</div>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚦 Comenzar
+
+### Instalación
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+### Desarrollo
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+La aplicación estará disponible en `http://localhost:4200`
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Build
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Tests
 
 ```bash
-ng e2e
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📝 Roadmap
 
-## Additional Resources
+### Fase 1: Fundamentos ✅
+- [x] Sistema de diseño SASS
+- [x] Estructura de carpetas modular
+- [ ] Componentes base reutilizables
+- [ ] Layout principal
+- [ ] Routing básico
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Fase 2: Autenticación
+- [ ] Login/Registro
+- [ ] Guards y gestión de sesión
+- [ ] Perfil de usuario
+
+### Fase 3: Features principales
+- [ ] Dashboard
+- [ ] Sistema de reservas de clases
+- [ ] Gestión de horarios
+- [ ] Calendario de clases
+
+### Fase 4: Administración
+- [ ] Panel de administración
+- [ ] Gestión de miembros
+- [ ] Estadísticas y reportes
+
+## 📄 Licencia
+
+MIT
+
+## 👥 Autor
+
+Jose Diaz

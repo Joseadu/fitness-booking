@@ -1,0 +1,80 @@
+// ============================================
+// RESET CSS Y ESTILOS BASE
+// ============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Links
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+// Imágenes
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Botones y inputs
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Listas
+ul,
+ol {
+  padding-left: 0;
+}
+
+// Tablas
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+

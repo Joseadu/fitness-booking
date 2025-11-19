@@ -1,0 +1,12 @@
+<button
+  [type]="type()"
+  [disabled]="disabled() || loading()"
+  [class]="buttonClasses()"
+>
+  @if (loading()) {
+    <span class="fb-button__spinner"></span>
+  }
+  <span class="fb-button__content">
+    <ng-content></ng-content>
+  </span>
+</button>

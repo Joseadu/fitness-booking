@@ -1,0 +1,28 @@
+// ============================================
+// FUNCIONES SCSS
+// ============================================
+
+// --------------------------------------------
+// Obtener valor de mapa de forma segura
+// --------------------------------------------
+@function map-get-safe($map, $key, $fallback: null) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  }
+  @return $fallback;
+}
+
+// --------------------------------------------
+// Convertir px a rem
+// --------------------------------------------
+@function rem($pixels, $base: 16) {
+  @return calc($pixels / $base) * 1rem;
+}
+
+// --------------------------------------------
+// Oscurecer/aclarar color con transparencia
+// --------------------------------------------
+@function alpha-color($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+

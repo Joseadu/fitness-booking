@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+// ============================================
+// FITNESS BOOKING - ESTILOS PRINCIPALES
+// ============================================
+
+// 1. Abstracts (Variables, Mixins, Funciones)
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// 2. Base (Reset, Tipografía, Contenedor)
+@import 'styles/base/reset';
+@import 'styles/base/typography';
+@import 'styles/base/container';
+
+// 3. Tema
+@import 'styles/themes/default';
+
+// 4. Utilidades (clases utility tipo Bootstrap)
+@import 'styles/utilities/spacing';
+@import 'styles/utilities/display';
+@import 'styles/utilities/flex';
+@import 'styles/utilities/grid';
+@import 'styles/utilities/colors';
+@import 'styles/utilities/borders';
+@import 'styles/utilities/sizing';
+@import 'styles/utilities/shadows';
+
+// 5. Componentes globales (se agregarán aquí los componentes compartidos)
+// Los componentes con estilos scoped irán en sus propios archivos .scss

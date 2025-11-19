@@ -1,0 +1,203 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/mixins';
+
+.fb-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-base;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+  transition: $transition-base;
+  white-space: nowrap;
+  
+  &:focus-visible {
+    outline: none;
+    @include focus-ring($primary);
+  }
+
+  &:disabled,
+  &--loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // ==========================================
+  // Tamaños
+  // ==========================================
+  &--sm {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    font-size: $font-size-sm;
+    line-height: 1.25rem;
+  }
+
+  &--md {
+    padding: map-get($spacers, 3) map-get($spacers, 4);
+    font-size: $font-size-base;
+    line-height: 1.5rem;
+  }
+
+  &--lg {
+    padding: map-get($spacers, 4) map-get($spacers, 6);
+    font-size: $font-size-lg;
+    line-height: 1.75rem;
+  }
+
+  // ==========================================
+  // Variantes
+  // ==========================================
+  
+  // Primary
+  &--primary {
+    background-color: $primary;
+    border-color: $primary;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-dark;
+      border-color: $primary-dark;
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($primary-dark, 5%);
+    }
+  }
+
+  // Secondary
+  &--secondary {
+    background-color: $secondary;
+    border-color: $secondary;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $secondary-dark;
+      border-color: $secondary-dark;
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($secondary-dark, 5%);
+    }
+  }
+
+  // Success
+  &--success {
+    background-color: $success;
+    border-color: $success;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: darken($success, 8%);
+      border-color: darken($success, 8%);
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($success, 12%);
+    }
+  }
+
+  // Danger
+  &--danger {
+    background-color: $danger;
+    border-color: $danger;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: darken($danger, 8%);
+      border-color: darken($danger, 8%);
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($danger, 12%);
+    }
+  }
+
+  // Warning
+  &--warning {
+    background-color: $warning;
+    border-color: $warning;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: darken($warning, 8%);
+      border-color: darken($warning, 8%);
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($warning, 12%);
+    }
+  }
+
+  // Outline
+  &--outline {
+    background-color: transparent;
+    border-color: $primary;
+    color: $primary;
+
+    &:hover:not(:disabled) {
+      background-color: $primary;
+      color: $white;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $primary-dark;
+      border-color: $primary-dark;
+    }
+  }
+
+  // Ghost
+  &--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: $primary;
+
+    &:hover:not(:disabled) {
+      background-color: rgba($primary, 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba($primary, 0.2);
+    }
+  }
+
+  // ==========================================
+  // Full width
+  // ==========================================
+  &--full-width {
+    display: flex;
+    width: 100%;
+  }
+
+  // ==========================================
+  // Loading state
+  // ==========================================
+  &__spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5rem;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: fb-button-spin 0.6s linear infinite;
+  }
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@keyframes fb-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

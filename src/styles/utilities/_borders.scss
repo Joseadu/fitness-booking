@@ -1,0 +1,53 @@
+// ============================================
+// UTILIDADES DE BORDES
+// ============================================
+
+// Border
+.border { border: $border-width solid $border-color !important; }
+.border-0 { border: 0 !important; }
+
+.border-top { border-top: $border-width solid $border-color !important; }
+.border-bottom { border-bottom: $border-width solid $border-color !important; }
+.border-left { border-left: $border-width solid $border-color !important; }
+.border-right { border-right: $border-width solid $border-color !important; }
+
+.border-top-0 { border-top: 0 !important; }
+.border-bottom-0 { border-bottom: 0 !important; }
+.border-left-0 { border-left: 0 !important; }
+.border-right-0 { border-right: 0 !important; }
+
+// Border radius
+.rounded-none { border-radius: 0 !important; }
+.rounded-sm { border-radius: $border-radius-sm !important; }
+.rounded { border-radius: $border-radius !important; }
+.rounded-lg { border-radius: $border-radius-lg !important; }
+.rounded-xl { border-radius: $border-radius-xl !important; }
+.rounded-full { border-radius: $border-radius-full !important; }
+
+// Border radius individuales
+.rounded-top { 
+  border-top-left-radius: $border-radius !important;
+  border-top-right-radius: $border-radius !important;
+}
+.rounded-bottom { 
+  border-bottom-left-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
+}
+.rounded-left { 
+  border-top-left-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
+}
+.rounded-right { 
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
+}
+
+// Border colors
+.border-primary { border-color: $primary !important; }
+.border-secondary { border-color: $secondary !important; }
+.border-success { border-color: $success !important; }
+.border-danger { border-color: $danger !important; }
+.border-warning { border-color: $warning !important; }
+.border-gray-200 { border-color: $gray-200 !important; }
+.border-gray-300 { border-color: $gray-300 !important; }
+
