@@ -69,6 +69,7 @@ Progress: **[██████████] 100%**
 - ✅ docs/ARCHITECTURE.md - System architecture
 - ✅ docs/SUPABASE_SETUP.md - Supabase setup guide
 - ✅ docs/SERVICE_ABSTRACTION.md - Service layer documentation
+- ✅ docs/TEST_DATA.md - Test data scripts and setup
 - ✅ PROJECT_STATUS.md - This file
 
 ### Database Design
@@ -97,6 +98,15 @@ Progress: **[██████████] 100%**
   - Client singleton configured
 - ✅ Connection tested and verified
 - ✅ Authentication configured
+- ✅ Test data inserted
+  - 1 box (CrossFit Madrid Centro)
+  - 4 WOD types (Endurance, Halterofilia, CrossTraining, Gimnasia)
+  - 7 classes scheduled (next 3 days)
+  - Test user created (owner@test.com)
+- ✅ Services tested with real data
+  - ClassService fetching data successfully
+  - BoxService fetching data successfully
+  - All queries working correctly
 
 ### Service Layer Architecture
 - ✅ Service abstraction layer implemented
@@ -386,6 +396,12 @@ npm test
 - ✅ Database: 5 tables created and configured
 - ✅ Credentials configured in environment files (gitignored)
 - ✅ Connection tested successfully
+- ✅ Test data: See `docs/TEST_DATA.md` for scripts
+
+### Test Credentials
+- **Test User**: `owner@test.com` / `password123`
+- **Box UUID**: `f47ac10b-58cc-4372-a567-0e02b2c3d479`
+- **User UUID**: `8a51ff55-1fdb-46a1-9874-ce066a577f6d`
 
 ---
 
@@ -397,6 +413,9 @@ npm test
 - ✅ Service abstraction layer implemented
 - ✅ All domain services created
 - ✅ Connection tested and working
+- ✅ Test data inserted and verified
+- ✅ Services fetching real data from PostgreSQL
+- ✅ RLS policies configured for development
 
 ### Architecture Highlights
 - **Clean Architecture**: Components → Domain Services → Abstraction → Implementation
