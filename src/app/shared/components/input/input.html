@@ -1,0 +1,45 @@
+<div [class]="inputClasses">
+  <!-- Icono inicial (opcional) -->
+  @if (iconStart) {
+    <span class="input__icon input__icon--start">{{ iconStart }}</span>
+  }
+  
+  <!-- Input -->
+  <input
+    [id]="inputId"
+    [type]="currentType"
+    [name]="name"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    [value]="value()"
+    [autocomplete]="autocomplete || 'off'"
+    class="input__field"
+    (input)="onInputChange($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+  
+  <!-- Toggle password visibility -->
+  @if (type === 'password') {
+    <button
+      type="button"
+      class="input__icon input__icon--end input__password-toggle"
+      (click)="togglePasswordVisibility()"
+      [attr.aria-label]="showPassword() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+    >
+      {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
+    </button>
+  }
+  
+  <!-- Icono final (opcional) -->
+  @if (iconEnd && type !== 'password') {
+    <span class="input__icon input__icon--end">{{ iconEnd }}</span>
+  }
+</div>
+
+<!-- Mensaje de error -->
+@if (error) {
+  <p class="input__error">{{ error }}</p>
+}
+

@@ -16,3 +16,6 @@ export * from './box.service';
 export * from './class.service';
 export * from './booking.service';
 
+// State Management
+export * from './auth-state.service';
+

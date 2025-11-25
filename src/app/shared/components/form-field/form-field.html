@@ -1,0 +1,22 @@
+<div class="form-field" [class.form-field--row]="!column">
+  <!-- Label -->
+  @if (label) {
+    <label [for]="inputId" class="form-field__label">
+      {{ label }}
+      @if (required) {
+        <span class="form-field__required">*</span>
+      }
+    </label>
+  }
+  
+  <!-- Input content (projected) -->
+  <div class="form-field__content">
+    <ng-content></ng-content>
+  </div>
+  
+  <!-- Hint -->
+  @if (hint) {
+    <p class="form-field__hint">{{ hint }}</p>
+  }
+</div>
+

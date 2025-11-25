@@ -1,0 +1,129 @@
+@import 'styles/abstracts/functions';
+
+.input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__field {
+    width: 100%;
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--color-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    outline: none;
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-primary-600);
+    }
+
+    &:focus {
+      border-color: var(--color-primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &:disabled {
+      background-color: var(--color-gray-100);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+    }
+  }
+
+  // Tamaños
+  &--sm &__field {
+    padding: spacing(2) spacing(3);
+    font-size: var(--font-size-sm);
+  }
+
+  &--md &__field {
+    padding: spacing(2.5) spacing(3.5);
+    font-size: var(--font-size-base);
+  }
+
+  &--lg &__field {
+    padding: spacing(3) spacing(4);
+    font-size: var(--font-size-lg);
+  }
+
+  // Con iconos
+  &--with-icon-start &__field {
+    padding-left: spacing(10);
+  }
+
+  &--with-icon-end &__field {
+    padding-right: spacing(10);
+  }
+
+  // Estado error
+  &--error &__field {
+    border-color: var(--color-danger-500);
+
+    &:focus {
+      border-color: var(--color-danger-500);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Focused
+  &--focused &__field {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  // Icono
+  &__icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    pointer-events: none;
+    font-size: 1.25rem;
+
+    &--start {
+      left: spacing(3);
+    }
+
+    &--end {
+      right: spacing(3);
+    }
+  }
+
+  // Toggle password
+  &__password-toggle {
+    pointer-events: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: spacing(1);
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  // Mensaje de error
+  &__error {
+    margin-top: spacing(1.5);
+    font-size: var(--font-size-sm);
+    color: var(--color-danger-500);
+  }
+}
+

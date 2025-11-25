@@ -1,0 +1,71 @@
+<div class="login-page">
+  <div class="login-container">
+    <!-- Logo / Brand -->
+    <div class="login-header">
+      <h1 class="login-title">Fitness Booking</h1>
+      <p class="login-subtitle">Inicia sesión en tu cuenta</p>
+    </div>
+
+    <!-- Error message -->
+    @if (errorMessage()) {
+      <div class="alert alert--danger">
+        <span class="alert__icon">⚠️</span>
+        <span class="alert__message">{{ errorMessage() }}</span>
+      </div>
+    }
+
+    <!-- Login Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Email -->
+      <fb-form-field label="Email" inputId="email" [required]="true">
+        <fb-input
+          type="email"
+          inputId="email"
+          name="email"
+          placeholder="correo@ejemplo.com"
+          autocomplete="email"
+          formControlName="email"
+          [error]="getFieldError('email')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Password -->
+      <fb-form-field label="Contraseña" inputId="password" [required]="true">
+        <fb-input
+          type="password"
+          inputId="password"
+          name="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          formControlName="password"
+          [error]="getFieldError('password')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Forgot password link -->
+      <div class="login-forgot">
+        <a routerLink="/auth/forgot-password" class="link">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <!-- Submit button -->
+      <fb-button
+        type="submit"
+        variant="primary"
+        size="lg"
+        [fullWidth]="true"
+        [loading]="isLoading()"
+        [disabled]="isLoading()"
+      >
+        {{ isLoading() ? 'Iniciando sesión...' : 'Iniciar sesión' }}
+      </fb-button>
+
+      <!-- Register link -->
+      <div class="login-register">
+        <span class="text-secondary">¿No tienes cuenta?</span>
+        <a routerLink="/auth/register" class="link">Regístrate</a>
+      </div>
+    </form>
+  </div>
+</div>
+

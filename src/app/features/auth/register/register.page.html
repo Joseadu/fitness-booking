@@ -1,0 +1,148 @@
+<div class="register-page">
+  <div class="register-container">
+    <!-- Logo / Brand -->
+    <div class="register-header">
+      <h1 class="register-title">Fitness Booking</h1>
+      <p class="register-subtitle">Crea tu cuenta</p>
+    </div>
+
+    <!-- Error message -->
+    @if (errorMessage()) {
+      <div class="alert alert--danger">
+        <span class="alert__icon">⚠️</span>
+        <span class="alert__message">{{ errorMessage() }}</span>
+      </div>
+    }
+
+    <!-- Register Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
+      
+      <!-- Role selector -->
+      <div class="role-selector">
+        <p class="role-selector__label">¿Cómo quieres usar Fitness Booking?</p>
+        
+        <div class="role-selector__options">
+          <!-- Business Owner -->
+          <button
+            type="button"
+            class="role-card"
+            [class.role-card--selected]="selectedRole() === UserRole.BUSINESS_OWNER"
+            (click)="selectRole(UserRole.BUSINESS_OWNER)"
+          >
+            <span class="role-card__icon">🏢</span>
+            <span class="role-card__title">Dueño de Negocio</span>
+            <span class="role-card__description">Gestiona tu box y clases</span>
+          </button>
+
+          <!-- Athlete -->
+          <button
+            type="button"
+            class="role-card"
+            [class.role-card--selected]="selectedRole() === UserRole.ATHLETE"
+            (click)="selectRole(UserRole.ATHLETE)"
+          >
+            <span class="role-card__icon">🏃</span>
+            <span class="role-card__title">Atleta</span>
+            <span class="role-card__description">Reserva clases en tu box</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Full Name -->
+      <fb-form-field label="Nombre completo" inputId="fullName" [required]="true">
+        <fb-input
+          type="text"
+          inputId="fullName"
+          name="fullName"
+          placeholder="Juan Pérez"
+          autocomplete="name"
+          formControlName="fullName"
+          [error]="getFieldError('fullName')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Email -->
+      <fb-form-field label="Email" inputId="email" [required]="true">
+        <fb-input
+          type="email"
+          inputId="email"
+          name="email"
+          placeholder="correo@ejemplo.com"
+          autocomplete="email"
+          formControlName="email"
+          [error]="getFieldError('email')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Phone (opcional) -->
+      <fb-form-field label="Teléfono" inputId="phone" hint="Opcional">
+        <fb-input
+          type="tel"
+          inputId="phone"
+          name="phone"
+          placeholder="+34 600 123 456"
+          autocomplete="tel"
+          formControlName="phone"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Password -->
+      <fb-form-field label="Contraseña" inputId="password" [required]="true">
+        <fb-input
+          type="password"
+          inputId="password"
+          name="password"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          formControlName="password"
+          [error]="getFieldError('password')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Confirm Password -->
+      <fb-form-field label="Confirmar contraseña" inputId="confirmPassword" [required]="true">
+        <fb-input
+          type="password"
+          inputId="confirmPassword"
+          name="confirmPassword"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          formControlName="confirmPassword"
+          [error]="getFieldError('confirmPassword')"
+        ></fb-input>
+      </fb-form-field>
+
+      <!-- Terms checkbox -->
+      <div class="register-terms">
+        <label class="checkbox">
+          <input type="checkbox" formControlName="acceptTerms" />
+          <span class="checkbox__text">
+            Acepto los <a href="#" class="link">términos y condiciones</a>
+          </span>
+        </label>
+        @if (form.get('acceptTerms')?.touched && form.get('acceptTerms')?.errors) {
+          <p class="error-text">Debes aceptar los términos y condiciones</p>
+        }
+      </div>
+
+      <!-- Submit button -->
+      <fb-button
+        type="submit"
+        variant="primary"
+        size="lg"
+        [fullWidth]="true"
+        [loading]="isLoading()"
+        [disabled]="isLoading()"
+      >
+        {{ isLoading() ? 'Creando cuenta...' : 'Crear cuenta' }}
+      </fb-button>
+
+      <!-- Login link -->
+      <div class="register-login">
+        <span class="text-secondary">¿Ya tienes cuenta?</span>
+        <a routerLink="/auth/login" class="link">Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</div>
+

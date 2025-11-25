@@ -1,0 +1,96 @@
+@import 'styles/abstracts/functions';
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
+  padding: spacing(6);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: spacing(6);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: spacing(8);
+}
+
+.login-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 spacing(2) 0;
+}
+
+.login-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-forgot {
+  text-align: right;
+  margin-top: spacing(-3);
+  margin-bottom: spacing(6);
+}
+
+.login-register {
+  text-align: center;
+  margin-top: spacing(6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing(2);
+}
+
+// Alert component (temporal, hasta que creemos el componente Alert)
+.alert {
+  padding: spacing(4);
+  border-radius: var(--radius-md);
+  margin-bottom: spacing(6);
+  display: flex;
+  align-items: flex-start;
+  gap: spacing(3);
+
+  &--danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--color-danger-200);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+  }
+
+  &__message {
+    color: var(--color-danger-700);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+}
+
+.link {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+  }
+}
+
