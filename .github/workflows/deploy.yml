@@ -21,6 +21,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create environment file
+        run: |
+          cat > src/environments/environment.ts << EOF
+          export const environment = {
+            production: true,
+            supabase: {
+              url: '${{ secrets.SUPABASE_URL }}',
+              anonKey: '${{ secrets.SUPABASE_ANON_KEY }}',
+            },
+          };
+          EOF
+
       - name: Build Angular App
         run: npm run build
 

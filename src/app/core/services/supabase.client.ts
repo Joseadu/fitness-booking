@@ -4,7 +4,7 @@
 // Cliente singleton de Supabase
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 let supabaseClient: SupabaseClient | null = null;
 
