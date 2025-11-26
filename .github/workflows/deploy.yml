@@ -43,5 +43,5 @@ jobs:
           username: ${{ secrets.IONOS_USER }}
           password: ${{ secrets.IONOS_PASS }}
           source: "dist/fitness-booking/browser/"
-          target: "/kunden/homepages/25/d4298812114/htdocs/fitness-booking/"
+          target: "/kunden/homepages/25/d4298812114/htdocs/"
           strip_components: 3
