@@ -17,7 +17,10 @@ export function getSupabaseClient(): SupabaseClient {
         auth: {
           autoRefreshToken: true,
           persistSession: true,
-          detectSessionInUrl: true
+          detectSessionInUrl: true,
+          storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+          storageKey: 'fitness-booking-auth',
+          flowType: 'pkce'
         }
       }
     );
