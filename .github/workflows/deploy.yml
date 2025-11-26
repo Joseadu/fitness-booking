@@ -39,9 +39,11 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.IONOS_HOST  }}
+          host: ${{ secrets.IONOS_HOST }}
           username: ${{ secrets.IONOS_USER }}
           password: ${{ secrets.IONOS_PASS }}
-          source: "dist/fitness-booking/browser/"
+          port: 22
+          source: "dist/fitness-booking/browser/*"
           target: "/kunden/homepages/25/d4298812114/htdocs/"
-          strip_components: 1
+          strip_components: 3
+          rm: true
