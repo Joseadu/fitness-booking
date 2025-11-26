@@ -1,52 +1,54 @@
-<div class="register-page">
-  <div class="register-container">
-    <!-- Logo / Brand -->
-    <div class="register-header">
-      <h1 class="register-title">Fitness Booking</h1>
-      <p class="register-subtitle">Crea tu cuenta</p>
-    </div>
-
-    <!-- Error message -->
-    @if (errorMessage()) {
-      <div class="alert alert--danger">
-        <span class="alert__icon">⚠️</span>
-        <span class="alert__message">{{ errorMessage() }}</span>
-      </div>
-    }
-
-    <!-- Register Form -->
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
+<div class="min-vh-100 d-flex align-center justify-center bg-gray-50 p-4">
+  <div class="w-100" style="max-width: 540px;">
+    <div class="bg-white rounded-xl shadow-lg p-8">
       
-      <!-- Role selector -->
-      <div class="role-selector">
-        <p class="role-selector__label">¿Cómo quieres usar Fitness Booking?</p>
-        
-        <div class="role-selector__options">
-          <!-- Business Owner -->
-          <button
-            type="button"
-            class="role-card"
-            [class.role-card--selected]="selectedRole() === UserRole.BUSINESS_OWNER"
-            (click)="selectRole(UserRole.BUSINESS_OWNER)"
-          >
-            <span class="role-card__icon">🏢</span>
-            <span class="role-card__title">Dueño de Negocio</span>
-            <span class="role-card__description">Gestiona tu box y clases</span>
-          </button>
-
-          <!-- Athlete -->
-          <button
-            type="button"
-            class="role-card"
-            [class.role-card--selected]="selectedRole() === UserRole.ATHLETE"
-            (click)="selectRole(UserRole.ATHLETE)"
-          >
-            <span class="role-card__icon">🏃</span>
-            <span class="role-card__title">Atleta</span>
-            <span class="role-card__description">Reserva clases en tu box</span>
-          </button>
-        </div>
+      <!-- Logo / Brand -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl fw-bold text-gray-900 mb-2">🏋️ Fitness Booking</h1>
+        <p class="text-base text-gray-600">Crea tu cuenta</p>
       </div>
+
+      <!-- Error message -->
+      @if (errorMessage()) {
+        <div class="rounded-lg p-4 mb-6 d-flex gap-3" style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid var(--color-danger-200);">
+          <span style="font-size: 1.25rem;">⚠️</span>
+          <span class="text-sm" style="color: var(--color-danger-700);">{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <!-- Register Form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-5">
+      
+        <!-- Role selector -->
+        <div class="mb-6">
+          <p class="text-sm fw-medium text-gray-900 mb-3">¿Cómo quieres usar Fitness Booking?</p>
+          
+          <div class="d-grid grid-cols-2 gap-3">
+            <!-- Business Owner -->
+            <button
+              type="button"
+              class="role-card d-flex flex-column align-center text-center p-5 border rounded-lg bg-white"
+              [class.role-card--selected]="selectedRole() === UserRole.BUSINESS_OWNER"
+              (click)="selectRole(UserRole.BUSINESS_OWNER)"
+            >
+              <span class="text-4xl mb-2">🏢</span>
+              <span class="text-base fw-semibold text-gray-900 mb-1">Dueño de Negocio</span>
+              <span class="text-sm text-gray-600">Gestiona tu box y clases</span>
+            </button>
+
+            <!-- Athlete -->
+            <button
+              type="button"
+              class="role-card d-flex flex-column align-center text-center p-5 border rounded-lg bg-white"
+              [class.role-card--selected]="selectedRole() === UserRole.ATHLETE"
+              (click)="selectRole(UserRole.ATHLETE)"
+            >
+              <span class="text-4xl mb-2">🏃</span>
+              <span class="text-base fw-semibold text-gray-900 mb-1">Atleta</span>
+              <span class="text-sm text-gray-600">Reserva clases en tu box</span>
+            </button>
+          </div>
+        </div>
 
       <!-- Full Name -->
       <fb-form-field label="Nombre completo" inputId="fullName" [required]="true">
@@ -112,37 +114,40 @@
         ></fb-input>
       </fb-form-field>
 
-      <!-- Terms checkbox -->
-      <div class="register-terms">
-        <label class="checkbox">
-          <input type="checkbox" formControlName="acceptTerms" />
-          <span class="checkbox__text">
-            Acepto los <a href="#" class="link">términos y condiciones</a>
-          </span>
-        </label>
-        @if (form.get('acceptTerms')?.touched && form.get('acceptTerms')?.errors) {
-          <p class="error-text">Debes aceptar los términos y condiciones</p>
-        }
-      </div>
+        <!-- Terms checkbox -->
+        <div class="mb-6">
+          <label class="d-flex align-start gap-2" style="cursor: pointer;">
+            <input type="checkbox" formControlName="acceptTerms" style="margin-top: 2px; cursor: pointer;" />
+            <span class="text-sm text-gray-600">
+              Acepto los <a href="#" class="text-primary fw-medium" style="text-decoration: none;">términos y condiciones</a>
+            </span>
+          </label>
+          @if (form.get('acceptTerms')?.touched && form.get('acceptTerms')?.errors) {
+            <p class="text-danger text-sm mt-1">Debes aceptar los términos y condiciones</p>
+          }
+        </div>
 
-      <!-- Submit button -->
-      <fb-button
-        type="submit"
-        variant="primary"
-        size="lg"
-        [fullWidth]="true"
-        [loading]="isLoading()"
-        [disabled]="isLoading()"
-      >
-        {{ isLoading() ? 'Creando cuenta...' : 'Crear cuenta' }}
-      </fb-button>
+        <!-- Submit button -->
+        <fb-button
+          type="submit"
+          variant="primary"
+          size="md"
+          [fullWidth]="true"
+          [loading]="isLoading()"
+          [disabled]="isLoading()"
+        >
+          {{ isLoading() ? 'Creando cuenta...' : 'Crear cuenta' }}
+        </fb-button>
 
-      <!-- Login link -->
-      <div class="register-login">
-        <span class="text-secondary">¿Ya tienes cuenta?</span>
-        <a routerLink="/auth/login" class="link">Inicia sesión</a>
-      </div>
-    </form>
+        <!-- Login link -->
+        <div class="text-center d-flex align-center justify-center gap-2">
+          <span class="text-gray-600">¿Ya tienes cuenta?</span>
+          <a routerLink="/auth/login" class="text-primary fw-medium" style="text-decoration: none;">
+            Inicia sesión
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

@@ -1,71 +1,78 @@
-<div class="login-page">
-  <div class="login-container">
-    <!-- Logo / Brand -->
-    <div class="login-header">
-      <h1 class="login-title">Fitness Booking</h1>
-      <p class="login-subtitle">Inicia sesión en tu cuenta</p>
-    </div>
-
-    <!-- Error message -->
-    @if (errorMessage()) {
-      <div class="alert alert--danger">
-        <span class="alert__icon">⚠️</span>
-        <span class="alert__message">{{ errorMessage() }}</span>
-      </div>
-    }
-
-    <!-- Login Form -->
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+<div class="min-vh-100 d-flex align-center justify-center bg-gray-50 p-4">
+  <div class="w-100" style="max-width: 440px;">
+    <div class="bg-white rounded-xl shadow-lg p-8">
       
-      <!-- Email -->
-      <fb-form-field label="Email" inputId="email" [required]="true">
-        <fb-input
-          type="email"
-          inputId="email"
-          name="email"
-          placeholder="correo@ejemplo.com"
-          autocomplete="email"
-          formControlName="email"
-          [error]="getFieldError('email')"
-        ></fb-input>
-      </fb-form-field>
-
-      <!-- Password -->
-      <fb-form-field label="Contraseña" inputId="password" [required]="true">
-        <fb-input
-          type="password"
-          inputId="password"
-          name="password"
-          placeholder="••••••••"
-          autocomplete="current-password"
-          formControlName="password"
-          [error]="getFieldError('password')"
-        ></fb-input>
-      </fb-form-field>
-
-      <!-- Forgot password link -->
-      <div class="login-forgot">
-        <a routerLink="/auth/forgot-password" class="link">¿Olvidaste tu contraseña?</a>
+      <!-- Logo / Brand -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl fw-bold text-gray-900 mb-2">🏋️ Fitness Booking</h1>
+        <p class="text-base text-gray-600">Inicia sesión en tu cuenta</p>
       </div>
 
-      <!-- Submit button -->
-      <fb-button
-        type="submit"
-        variant="primary"
-        size="lg"
-        [fullWidth]="true"
-        [loading]="isLoading()"
-        [disabled]="isLoading()"
-      >
-        {{ isLoading() ? 'Iniciando sesión...' : 'Iniciar sesión' }}
-      </fb-button>
+      <!-- Error message -->
+      @if (errorMessage()) {
+        <div class="bg-danger rounded-lg p-4 mb-6 d-flex gap-3" style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid var(--color-danger-200);">
+          <span style="font-size: 1.25rem;">⚠️</span>
+          <span class="text-sm" style="color: var(--color-danger-700);">{{ errorMessage() }}</span>
+        </div>
+      }
 
-      <!-- Register link -->
-      <div class="login-register">
-        <span class="text-secondary">¿No tienes cuenta?</span>
-        <a routerLink="/auth/register" class="link">Regístrate</a>
-      </div>
-    </form>
+      <!-- Login Form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-5">
+        
+        <!-- Email -->
+        <fb-form-field label="Email" inputId="email" [required]="true">
+          <fb-input
+            type="email"
+            inputId="email"
+            name="email"
+            placeholder="correo@ejemplo.com"
+            autocomplete="email"
+            formControlName="email"
+            [error]="getFieldError('email')"
+          ></fb-input>
+        </fb-form-field>
+
+        <!-- Password -->
+        <fb-form-field label="Contraseña" inputId="password" [required]="true">
+          <fb-input
+            type="password"
+            inputId="password"
+            name="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            formControlName="password"
+            [error]="getFieldError('password')"
+          ></fb-input>
+        </fb-form-field>
+
+        <!-- Forgot password link -->
+        <div class="text-right" style="margin-top: -12px;">
+          <a routerLink="/auth/forgot-password" class="text-sm text-primary fw-medium" style="text-decoration: none;">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+
+        <!-- Submit button -->
+        <fb-button
+          type="submit"
+          variant="primary"
+          size="md"
+          [fullWidth]="true"
+          [loading]="isLoading()"
+          [disabled]="isLoading()"
+        >
+          {{ isLoading() ? 'Iniciando sesión...' : 'Iniciar sesión' }}
+        </fb-button>
+
+        <!-- Register link -->
+        <div class="text-center d-flex align-center justify-center gap-2">
+          <span class="text-gray-600">¿No tienes cuenta?</span>
+          <a routerLink="/auth/register" class="text-primary fw-medium" style="text-decoration: none;">
+            Regístrate
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

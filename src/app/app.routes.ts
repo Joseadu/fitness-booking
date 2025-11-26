@@ -38,6 +38,12 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
+  // Design System (público)
+  {
+    path: 'design-system',
+    loadComponent: () => import('./features/design-system/design-system.page').then(m => m.DesignSystemPage)
+  },
+
   // 404 - Not found
   {
     path: '**',

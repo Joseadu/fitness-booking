@@ -1,13 +1,11 @@
 <div class="min-vh-100 bg-gray-50">
-  <!-- Header temporal -->
+  <!-- Header -->
   <header class="bg-white border-bottom py-4 shadow-sm">
     <div class="container">
       <div class="d-flex justify-between align-center">
-        <h1 class="text-2xl fw-bold text-primary mb-0">🏋️ Fitness Booking</h1>
+        <h1 class="text-2xl fw-bold text-primary mb-0">🎨 Design System</h1>
         <nav class="d-flex gap-4">
-          <a href="#" class="text-gray-700">Inicio</a>
-          <a href="#" class="text-gray-700">Clases</a>
-          <a href="#" class="text-gray-700">Mi Cuenta</a>
+          <a href="/" class="text-gray-700">← Volver</a>
         </nav>
       </div>
     </div>
@@ -18,25 +16,26 @@
     <div class="container">
       <!-- Hero Section -->
       <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-        <h2 class="text-4xl fw-bold mb-4">Reserva tu clase de CrossFit</h2>
+        <h2 class="text-4xl fw-bold mb-4">Sistema de Diseño Fitness Booking</h2>
         <p class="text-gray-600 text-lg mb-6">
-          Sistema de gestión y reservas para tu box. Simple, rápido y eficiente.
+          Documentación completa de componentes, colores, espaciado y utilidades del sistema de diseño.
+          Construido con SASS y siguiendo las mejores prácticas de CSS moderno.
         </p>
         
-        <!-- Demo de botones -->
+        <!-- Demo de botones principales -->
         <div class="d-flex flex-wrap gap-4">
           <fb-button variant="primary" size="lg">
-            Ver Clases Disponibles
+            Botón Principal
           </fb-button>
           <fb-button variant="outline" size="lg">
-            Conocer Más
+            Botón Secundario
           </fb-button>
         </div>
       </section>
 
       <!-- Demo del sistema de diseño -->
       <section class="bg-white rounded-lg shadow-md p-8 mb-8">
-        <h3 class="text-2xl fw-bold mb-6">🎨 Componentes del Sistema</h3>
+        <h3 class="text-2xl fw-bold mb-6">🔘 Componentes</h3>
         
         <!-- Variantes de botones -->
         <div class="mb-8">
@@ -77,16 +76,16 @@
       <section class="mb-8">
         <h3 class="text-2xl fw-bold mb-6">📐 Sistema de Grid</h3>
         <div class="d-grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3 gap-6">
-          @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+          @for (item of items; track item) {
             <div class="bg-white rounded-lg shadow p-6">
-              <h4 class="text-lg fw-bold mb-2">Clase {{ item }}</h4>
+              <h4 class="text-lg fw-bold mb-2">Card {{ item }}</h4>
               <p class="text-gray-600 mb-4">
-                CrossFit WOD - {{ item }}:00 PM
+                Ejemplo de tarjeta responsiva - {{ item }}:00 PM
               </p>
               <div class="d-flex justify-between align-center">
-                <span class="text-sm text-gray-500">10/15 plazas</span>
+                <span class="text-sm text-gray-500">Info adicional</span>
                 <fb-button variant="primary" size="sm">
-                  Reservar
+                  Acción
                 </fb-button>
               </div>
             </div>
@@ -324,11 +323,9 @@
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-8 mt-16">
     <div class="container text-center">
-      <p class="mb-2">🏋️ Fitness Booking - Sistema de Reservas</p>
+      <p class="mb-2">🎨 Design System - Fitness Booking</p>
       <p class="text-gray-400 text-sm">Construido con Angular 20 & SASS</p>
     </div>
   </footer>
-
-  <!-- Router Outlet para futuras rutas -->
-  <router-outlet />
 </div>
+

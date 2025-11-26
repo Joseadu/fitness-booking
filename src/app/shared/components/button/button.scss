@@ -39,9 +39,17 @@
   }
 
   &--md {
-    padding: map-get($spacers, 3) map-get($spacers, 4);
-    font-size: $font-size-base;
-    line-height: 1.5rem;
+    // Mobile: botón pequeño/compacto
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    font-size: $font-size-sm;
+    line-height: 1.25rem;
+    
+    // Desktop: botón mediano (más espacio disponible)
+    @media (min-width: 769px) {
+      padding: map-get($spacers, 3) map-get($spacers, 4);
+      font-size: $font-size-base;
+      line-height: 1.5rem;
+    }
   }
 
   &--lg {
