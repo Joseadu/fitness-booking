@@ -1,10 +1,9 @@
 name: Deploy Fitness Booking
 
 on:
-  workflow_dispatch:  # Solo ejecutar manualmente, NO automáticamente
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master  # Se ejecutará solo cuando hagas push a la rama master
 
 jobs:
   build:
@@ -43,8 +42,6 @@ jobs:
           host: ${{ secrets.IONOS_HOST }}
           username: ${{ secrets.IONOS_USER }}
           password: ${{ secrets.IONOS_PASS }}
-          port: 22
-          source: "dist/fitness-booking/browser/*"
-          target: "/kunden/homepages/25/d4298812114/htdocs/fitness-booking"
+          source: "dist/fitness-booking/browser/"
+          target: "/kunden/homepages/25/d4298812114/htdocs/fitness-booking/"
           strip_components: 3
-          overwrite: true
