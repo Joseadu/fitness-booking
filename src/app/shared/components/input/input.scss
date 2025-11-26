@@ -1,4 +1,4 @@
-@import 'styles/abstracts/functions';
+@use 'styles/abstracts/variables' as *;
 
 .input {
   position: relative;
@@ -8,75 +8,91 @@
 
   &__field {
     width: 100%;
-    font-family: inherit;
-    font-size: var(--font-size-base);
+    font-family: $font-family-base;
+    font-size: $font-size-base;
     line-height: 1.5;
-    color: var(--text-primary);
-    background-color: var(--color-white);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
+    color: $gray-900;
+    background-color: $white;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius;
+    padding: 0.625rem 0.875rem; // 10px 14px
+    transition: all 0.15s ease;
     outline: none;
 
     &::placeholder {
-      color: var(--text-tertiary);
+      color: $gray-400;
     }
 
-    &:hover:not(:disabled) {
-      border-color: var(--color-primary-600);
+    &:hover:not(:disabled):not(:focus) {
+      border-color: $gray-400;
     }
 
     &:focus {
-      border-color: var(--color-primary-500);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     }
 
     &:disabled {
-      background-color: var(--color-gray-100);
-      color: var(--text-secondary);
+      background-color: $gray-50;
+      color: $gray-500;
       cursor: not-allowed;
+      opacity: 0.6;
     }
   }
 
   // Tamaños
   &--sm &__field {
-    padding: spacing(2) spacing(3);
-    font-size: var(--font-size-sm);
+    padding: 0.5rem 0.75rem; // 8px 12px
+    font-size: $font-size-sm;
   }
 
   &--md &__field {
-    padding: spacing(2.5) spacing(3.5);
-    font-size: var(--font-size-base);
+    // Mobile: más compacto (44px min altura táctil)
+    padding: 0.5rem 0.75rem; // 8px 12px
+    font-size: $font-size-sm;
+    
+    // Desktop: más espacioso
+    @media (min-width: 769px) {
+      padding: 0.625rem 0.875rem; // 10px 14px
+      font-size: $font-size-base;
+    }
   }
 
   &--lg &__field {
-    padding: spacing(3) spacing(4);
-    font-size: var(--font-size-lg);
+    // Mobile: compacto pero táctil
+    padding: 0.625rem 0.875rem; // 10px 14px
+    font-size: $font-size-base;
+    
+    // Desktop: grande y espacioso
+    @media (min-width: 769px) {
+      padding: 0.75rem 1rem; // 12px 16px
+      font-size: $font-size-lg;
+    }
   }
 
   // Con iconos
   &--with-icon-start &__field {
-    padding-left: spacing(10);
+    padding-left: 2.5rem; // 40px
   }
 
   &--with-icon-end &__field {
-    padding-right: spacing(10);
+    padding-right: 2.5rem; // 40px
   }
 
   // Estado error
   &--error &__field {
-    border-color: var(--color-danger-500);
+    border-color: $danger;
 
     &:focus {
-      border-color: var(--color-danger-500);
+      border-color: $danger;
       box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
     }
   }
 
   // Focused
   &--focused &__field {
-    border-color: var(--color-primary-500);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
   }
 
   // Icono
@@ -85,16 +101,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-tertiary);
+    color: $gray-400;
     pointer-events: none;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 
     &--start {
-      left: spacing(3);
+      left: 0.75rem; // 12px
     }
 
     &--end {
-      right: spacing(3);
+      right: 0.75rem; // 12px
     }
   }
 
@@ -104,26 +120,26 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: spacing(1);
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
+    padding: 0.25rem;
+    color: $gray-500;
+    transition: color 0.15s ease;
 
     &:hover {
-      color: var(--text-primary);
+      color: $gray-700;
     }
 
     &:focus {
-      outline: 2px solid var(--color-primary-500);
+      outline: 2px solid $primary;
       outline-offset: 2px;
-      border-radius: var(--radius-sm);
+      border-radius: $border-radius-sm;
     }
   }
 
   // Mensaje de error
   &__error {
-    margin-top: spacing(1.5);
-    font-size: var(--font-size-sm);
-    color: var(--color-danger-500);
+    margin-top: 0.375rem; // 6px
+    font-size: $font-size-sm;
+    color: $danger;
   }
 }
 

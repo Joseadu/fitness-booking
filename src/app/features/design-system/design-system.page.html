@@ -72,6 +72,120 @@
         </div>
       </section>
 
+      <!-- Inputs Demo -->
+      <section class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h3 class="text-2xl fw-bold mb-6">📝 Inputs & Form Fields</h3>
+        
+        <!-- Inputs básicos -->
+        <div class="mb-8">
+          <h4 class="text-lg fw-semibold mb-4">Inputs Básicos</h4>
+          <div class="d-grid grid-cols-1 gap-5" style="max-width: 500px;">
+            
+            <!-- Text input -->
+            <fb-form-field label="Nombre" inputId="demo-name" [required]="true">
+              <fb-input
+                type="text"
+                inputId="demo-name"
+                placeholder="Juan Pérez"
+                [(ngModel)]="textValue"
+              ></fb-input>
+            </fb-form-field>
+
+            <!-- Email input -->
+            <fb-form-field label="Email" inputId="demo-email">
+              <fb-input
+                type="email"
+                inputId="demo-email"
+                placeholder="correo@ejemplo.com"
+                [(ngModel)]="emailValue"
+              ></fb-input>
+            </fb-form-field>
+
+            <!-- Password input -->
+            <fb-form-field label="Contraseña" inputId="demo-password">
+              <fb-input
+                type="password"
+                inputId="demo-password"
+                placeholder="••••••••"
+                [(ngModel)]="passwordValue"
+              ></fb-input>
+            </fb-form-field>
+
+            <!-- Input con hint -->
+            <fb-form-field label="Teléfono" inputId="demo-phone" hint="Formato: +34 XXX XXX XXX">
+              <fb-input
+                type="tel"
+                inputId="demo-phone"
+                placeholder="+34 600 123 456"
+              ></fb-input>
+            </fb-form-field>
+
+            <!-- Input con error -->
+            <fb-form-field label="Email" inputId="demo-error" [required]="true">
+              <fb-input
+                type="email"
+                inputId="demo-error"
+                placeholder="correo@ejemplo.com"
+                error="Este email no es válido"
+              ></fb-input>
+            </fb-form-field>
+
+            <!-- Input deshabilitado -->
+            <fb-form-field label="Campo deshabilitado" inputId="demo-disabled">
+              <fb-input
+                type="text"
+                inputId="demo-disabled"
+                [(ngModel)]="disabledValue"
+                [disabled]="true"
+              ></fb-input>
+            </fb-form-field>
+          </div>
+        </div>
+
+        <!-- Tamaños de input -->
+        <div class="mb-8">
+          <h4 class="text-lg fw-semibold mb-4">Tamaños</h4>
+          <div class="d-flex flex-column gap-4" style="max-width: 400px;">
+            <fb-input
+              type="text"
+              placeholder="Input pequeño (sm)"
+              size="sm"
+            ></fb-input>
+            <fb-input
+              type="text"
+              placeholder="Input mediano (md)"
+              size="md"
+            ></fb-input>
+            <fb-input
+              type="text"
+              placeholder="Input grande (lg)"
+              size="lg"
+            ></fb-input>
+          </div>
+        </div>
+
+        <!-- Estados -->
+        <div>
+          <h4 class="text-lg fw-semibold mb-4">Estados</h4>
+          <div class="d-flex flex-column gap-4" style="max-width: 400px;">
+            <fb-input
+              type="text"
+              placeholder="Normal"
+            ></fb-input>
+            <fb-input
+              type="text"
+              placeholder="Con error"
+              error="Este campo es requerido"
+            ></fb-input>
+            <fb-input
+              type="text"
+              placeholder="Deshabilitado"
+              [disabled]="true"
+            ></fb-input>
+          </div>
+        </div>
+      </section>
+
       <!-- Grid Demo -->
       <section class="mb-8">
         <h3 class="text-2xl fw-bold mb-6">📐 Sistema de Grid</h3>
