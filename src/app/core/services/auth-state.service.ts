@@ -46,6 +46,12 @@ export class AuthStateService {
    * Estado de carga
    */
   public isLoading = signal(true);
+  
+  /**
+   * Observable que emite cuando la inicialización está completa
+   */
+  private _isLoaded$ = new BehaviorSubject<boolean>(false);
+  public isLoaded$ = this._isLoaded$.asObservable();
 
   /**
    * Si el usuario está autenticado (signal computed)
@@ -88,6 +94,7 @@ export class AuthStateService {
       console.error('Error initializing auth:', error);
     } finally {
       this.isLoading.set(false);
+      this._isLoaded$.next(true);
     }
   }
 

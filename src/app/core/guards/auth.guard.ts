@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Router, type CanActivateFn } from '@angular/router';
 import { AuthStateService } from '@core/services/auth-state.service';
-import { map, take } from 'rxjs';
+import { map, take, filter, switchMap, first } from 'rxjs';
 
 /**
  * Auth Guard
@@ -22,9 +22,10 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authState = inject(AuthStateService);
   const router = inject(Router);
 
-  // Esperar a que el estado esté cargado
-  return authState.currentUser$.pipe(
-    take(1),
+  // Esperar a que la inicialización termine, luego verificar autenticación
+  return authState.isLoaded$.pipe(
+    first(loaded => loaded === true), // Esperar hasta que esté cargado (o tomar el primero si ya es true)
+    switchMap(() => authState.currentUser$.pipe(take(1))),
     map(user => {
       if (user) {
         console.log('✅ Auth Guard: Usuario autenticado', user.email);
