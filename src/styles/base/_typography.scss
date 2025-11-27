@@ -4,7 +4,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 0.5em;
+  margin-bottom: 0; // Sin margen por defecto, usar clases utility mb-* cuando sea necesario
   font-family: $font-family-heading;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
@@ -61,7 +61,7 @@ h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0; // Sin margen por defecto, usar clases utility mb-* cuando sea necesario
 }
 
 // Clases de texto
