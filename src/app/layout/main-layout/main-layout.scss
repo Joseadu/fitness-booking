@@ -1,0 +1,19 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/mixins';
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $gray-50;
+}
+
+.main-layout__content {
+  flex: 1;
+  padding: map-get($spacers, 6); // 24px
+  
+  @include respond-to(md) {
+    padding: map-get($spacers, 8); // 32px
+  }
+}
+

@@ -9,9 +9,10 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
 
-  // Auth routes (Login, Register, etc.)
+  // Auth Layout (sin header/sidebar)
   {
     path: 'auth',
+    loadComponent: () => import('./layout/auth-layout/auth-layout').then(m => m.AuthLayout),
     children: [
       {
         path: 'login',
@@ -28,21 +29,25 @@ export const routes: Routes = [
     ]
   },
 
-  // Dashboard (protegido)
+  // Main Layout (con header) - Rutas protegidas
   {
-    path: 'dashboard',
-    loadComponent: () => import('./features/dashboard/dashboard.page').then(m => m.DashboardPage),
-    canActivate: [authGuard]
+    path: '',
+    loadComponent: () => import('./layout/main-layout/main-layout').then(m => m.MainLayout),
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./features/dashboard/dashboard.page').then(m => m.DashboardPage)
+      },
+      {
+        path: 'onboarding',
+        loadComponent: () => import('./features/onboarding/onboarding.page').then(m => m.OnboardingPage)
+      }
+      // Aquí se agregarán más rutas protegidas (classes, bookings, etc.)
+    ]
   },
 
-  // Onboarding para business owners
-  {
-    path: 'onboarding',
-    loadComponent: () => import('./features/onboarding/onboarding.page').then(m => m.OnboardingPage),
-    canActivate: [authGuard]
-  },
-
-  // Design System (público)
+  // Design System (público, sin layout)
   {
     path: 'design-system',
     loadComponent: () => import('./features/design-system/design-system.page').then(m => m.DesignSystemPage)

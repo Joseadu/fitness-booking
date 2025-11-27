@@ -1,0 +1,82 @@
+<header class="header">
+  <div class="header__container">
+    <!-- Logo / Brand -->
+    <div class="header__brand">
+      <a routerLink="/dashboard" class="header__logo">
+        <span class="header__logo-icon">🏋️</span>
+        <span class="header__logo-text">Fitness Booking</span>
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header__nav">
+      @if (currentProfile$ | async; as profile) {
+        @if (profile.role === 'business_owner') {
+          <a routerLink="/dashboard" routerLinkActive="active" class="header__nav-link">
+            Dashboard
+          </a>
+          <a routerLink="/classes" routerLinkActive="active" class="header__nav-link">
+            Clases
+          </a>
+          <a routerLink="/bookings" routerLinkActive="active" class="header__nav-link">
+            Reservas
+          </a>
+        } @else if (profile.role === 'athlete') {
+          <a routerLink="/dashboard" routerLinkActive="active" class="header__nav-link">
+            Dashboard
+          </a>
+          <a routerLink="/classes" routerLinkActive="active" class="header__nav-link">
+            Clases Disponibles
+          </a>
+          <a routerLink="/my-bookings" routerLinkActive="active" class="header__nav-link">
+            Mis Reservas
+          </a>
+        }
+      }
+    </nav>
+
+    <!-- User Menu -->
+    <div class="header__user-menu">
+      @if (currentProfile$ | async; as profile) {
+        <button 
+          class="header__user-button"
+          (click)="toggleUserMenu()"
+          type="button"
+        >
+          <div class="header__user-avatar">
+            {{ (profile.full_name?.charAt(0) || 'U').toUpperCase() }}
+          </div>
+          <span class="header__user-name">{{ profile.full_name || 'Usuario' }}</span>
+          <span class="header__user-arrow">▼</span>
+        </button>
+
+        <!-- Dropdown Menu -->
+        @if (isUserMenuOpen()) {
+          <div class="header__dropdown">
+            <div class="header__dropdown-header">
+              <div class="header__dropdown-name">{{ profile.full_name || 'Usuario' }}</div>
+              @if (currentUser$ | async; as user) {
+                <div class="header__dropdown-email">{{ user.email }}</div>
+              }
+            </div>
+            <div class="header__dropdown-divider"></div>
+            <a routerLink="/profile" class="header__dropdown-item" (click)="closeUserMenu()">
+              Mi Perfil
+            </a>
+            <a routerLink="/settings" class="header__dropdown-item" (click)="closeUserMenu()">
+              Configuración
+            </a>
+            <div class="header__dropdown-divider"></div>
+            <button 
+              class="header__dropdown-item header__dropdown-item--danger"
+              (click)="signOut(); closeUserMenu()"
+              type="button"
+            >
+              Cerrar Sesión
+            </button>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</header>
