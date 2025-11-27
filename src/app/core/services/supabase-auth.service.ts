@@ -194,5 +194,16 @@ export class SupabaseAuthService implements IAuthService {
       map(() => undefined)
     );
   }
+
+  resendConfirmationEmail(email: string): Observable<void> {
+    return from(
+      this.supabase.auth.resend({
+        type: 'signup',
+        email: email
+      })
+    ).pipe(
+      map(() => undefined)
+    );
+  }
 }
 

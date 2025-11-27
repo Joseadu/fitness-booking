@@ -40,5 +40,8 @@ export interface IAuthService {
   // Password management
   resetPassword(email: string): Observable<void>;
   updatePassword(newPassword: string): Observable<void>;
+  
+  // Email confirmation
+  resendConfirmationEmail(email: string): Observable<void>;
 }
 

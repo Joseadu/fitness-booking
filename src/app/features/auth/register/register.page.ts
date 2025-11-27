@@ -131,14 +131,10 @@ export class RegisterPage {
         console.log('✅ Usuario y perfil creados:', user);
         this.isLoading.set(false);
         
-        // Redirigir según el rol
-        if (role === UserRole.BUSINESS_OWNER) {
-          // Redirigir a onboarding para crear box
-          this.router.navigate(['/onboarding']);
-        } else {
-          // Redirigir a dashboard de atleta
-          this.router.navigate(['/dashboard']);
-        }
+        // Redirigir a página de confirmación de email
+        this.router.navigate(['/auth/email-confirmation'], {
+          queryParams: { email }
+        });
       },
       error: (error) => {
         console.error('❌ Error en registro:', error);

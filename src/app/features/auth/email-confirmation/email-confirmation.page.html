@@ -1,0 +1,91 @@
+<div class="min-vh-100 d-flex align-center justify-center bg-gray-50 p-4">
+  <div class="w-100" style="max-width: 500px;">
+    <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+      
+      <!-- Success Icon -->
+      <div class="mb-6">
+        <div class="d-flex justify-center mb-4">
+          <div class="rounded-full d-flex align-center justify-center" 
+               style="width: 80px; height: 80px; background-color: rgba(16, 185, 129, 0.1);">
+            <span style="font-size: 3rem;">✉️</span>
+          </div>
+        </div>
+        <h1 class="text-3xl fw-bold text-gray-900 mb-2">¡Registro exitoso!</h1>
+        <p class="text-base text-gray-600">Estás a un paso de comenzar</p>
+      </div>
+
+      <!-- Message -->
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <p class="text-base text-gray-700 mb-4">
+          Te hemos enviado un correo de confirmación a:
+        </p>
+        <p class="text-lg fw-semibold text-primary mb-4">
+          {{ email() }}
+        </p>
+        <p class="text-sm text-gray-600">
+          Por favor, revisa tu bandeja de entrada (y la carpeta de spam) y haz click en el enlace de confirmación.
+        </p>
+      </div>
+
+      <!-- Success message -->
+      @if (resendSuccess()) {
+        <div class="rounded-lg p-4 mb-6" style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+          <p class="text-sm text-gray-700">
+            ✅ <strong>Email reenviado correctamente</strong>. Revisa tu bandeja de entrada.
+          </p>
+        </div>
+      }
+
+      <!-- Error message -->
+      @if (resendError()) {
+        <div class="rounded-lg p-4 mb-6" style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+          <p class="text-sm text-gray-700">
+            ⚠️ {{ resendError() }}
+          </p>
+        </div>
+      }
+
+      <!-- Actions -->
+      <div class="d-flex flex-column gap-3">
+        <fb-button
+          variant="primary"
+          size="md"
+          [fullWidth]="true"
+          routerLink="/auth/login"
+        >
+          Ir al inicio de sesión
+        </fb-button>
+
+        <fb-button
+          variant="outline"
+          size="md"
+          [fullWidth]="true"
+          [loading]="isResending()"
+          [disabled]="isResending()"
+          (click)="onResendEmail()"
+        >
+          {{ isResending() ? 'Reenviando...' : 'Reenviar email de confirmación' }}
+        </fb-button>
+        
+        <a 
+          routerLink="/auth/register" 
+          class="text-sm text-gray-600" 
+          style="text-decoration: none;"
+        >
+          ¿Email incorrecto? Registrarse de nuevo
+        </a>
+      </div>
+    </div>
+
+    <!-- Additional help -->
+    <div class="text-center mt-6">
+      <p class="text-sm text-gray-500">
+        ¿Problemas con el registro? 
+        <a href="mailto:support@fitnessbooking.com" class="text-primary fw-medium" style="text-decoration: none;">
+          Contacta con soporte
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+

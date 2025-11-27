@@ -206,5 +206,12 @@ export class AuthStateService {
   public isAthlete(): boolean {
     return this.hasRole(UserRole.ATHLETE);
   }
+
+  /**
+   * Reenviar email de confirmación
+   */
+  public resendConfirmationEmail(email: string): Observable<void> {
+    return this.authService.resendConfirmationEmail(email);
+  }
 }
 

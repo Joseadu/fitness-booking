@@ -20,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'register',
         loadComponent: () => import('./features/auth/register/register.page').then(m => m.RegisterPage)
+      },
+      {
+        path: 'email-confirmation',
+        loadComponent: () => import('./features/auth/email-confirmation/email-confirmation.page').then(m => m.EmailConfirmationPage)
       }
     ]
   },
