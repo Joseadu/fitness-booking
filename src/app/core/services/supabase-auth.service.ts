@@ -19,6 +19,13 @@ export class SupabaseAuthService implements IAuthService {
       this.supabase.auth.signUp({
         email: credentials.email,
         password: credentials.password,
+        options: {
+          data: {
+            full_name: credentials.fullName,
+            role: credentials.role,
+            box_id: credentials.boxId || null,
+          }
+        }
       })
     ).pipe(
       switchMap(({ data, error }) => {
@@ -30,31 +37,58 @@ export class SupabaseAuthService implements IAuthService {
           return throwError(() => new Error('User creation failed'));
         }
 
-        // Create profile
-        return from(
-          this.supabase
-            .from('profiles')
-            .insert({
-              id: data.user.id,
-              full_name: credentials.fullName,
-              role: credentials.role,
-              box_id: credentials.boxId,
+        // Try to get the profile (trigger should have created it)
+        const getProfile = (retries = 3): Observable<any> => {
+          return from(new Promise(resolve => setTimeout(resolve, 1000))).pipe(
+            switchMap(() => from(
+              this.supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', data.user!.id)
+                .maybeSingle()
+            )),
+            switchMap(({ data: profile, error: profileError }) => {
+              if (profile) {
+                return of(profile);
+              }
+              
+              if (retries > 0) {
+                console.log(`Profile not found, retrying... (${retries} left)`);
+                return getProfile(retries - 1);
+              }
+              
+              // If trigger didn't work, create profile manually
+              console.log('Creating profile manually');
+              return from(
+                this.supabase
+                  .from('profiles')
+                  .insert({
+                    id: data.user!.id,
+                    full_name: credentials.fullName,
+                    role: credentials.role,
+                    box_id: credentials.boxId || null,
+                  })
+                  .select()
+                  .single()
+              ).pipe(
+                map(({ data: newProfile, error: insertError }) => {
+                  if (insertError) {
+                    throw insertError;
+                  }
+                  return newProfile;
+                })
+              );
             })
-            .select()
-            .single()
-        ).pipe(
-          map(({ data: profile, error: profileError }) => {
-            if (profileError) {
-              throw profileError;
-            }
-            
-            return {
-              id: data.user!.id,
-              email: data.user!.email!,
-              role: credentials.role,
-              profile: profile
-            };
-          })
+          );
+        };
+
+        return getProfile().pipe(
+          map((profile) => ({
+            id: data.user!.id,
+            email: data.user!.email!,
+            role: profile.role as UserRole,
+            profile: profile
+          }))
         );
       })
     );
